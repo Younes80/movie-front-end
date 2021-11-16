@@ -1,1 +1,248 @@
-/* You can add global styles to this file, and also import other style files */
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use "~@angular/material" as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$movies-front-end-primary: mat.define-palette(mat.$indigo-palette);
+$movies-front-end-accent: mat.define-palette(
+  mat.$pink-palette,
+  A200,
+  A100,
+  A400
+);
+
+// The warn palette is optional (defaults to red).
+$movies-front-end-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$movies-front-end-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $movies-front-end-primary,
+      accent: $movies-front-end-accent,
+      warn: $movies-front-end-warn,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($movies-front-end-theme);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 8px 15px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:root {
+  --font-family: "Roboto", sans-serif;
+  --primary: #2d3436;
+  --secondary: #636e72;
+  --accent: #e5546d;
+  --lightgray: #ddd;
+  --text-regular: #333;
+}
+
+body {
+  font-family: var(--font-family);
+  color: var(--text-regular);
+}
+
+.container {
+  max-width: 1200px;
+  display: block;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-justify-content-center {
+  justify-content: center;
+}
+
+.flex-justify-content-between {
+  justify-content: space-between;
+}
+
+.flex-align-items-center {
+  align-items: center;
+}
+
+.flex-align-items-between {
+  align-items: space-between;
+}
+
+.flex-fill {
+  flex: 1 1 auto;
+}
+.flex-50 {
+  flex: 1 1 50%;
+}
+
+.p-10 {
+  padding: 10px;
+}
+.p-20 {
+  padding: 20px;
+}
+.pr-10 {
+  padding-right: 10px;
+}
+.pl-10 {
+  padding-left: 10px;
+}
+.m-10 {
+  margin: 10px;
+}
+.mr-10 {
+  margin-right: 10px;
+}
+.mt-20 {
+  margin-top: 20px;
+}
+.m-20 {
+  margin: 20px;
+}
+.mb-20 {
+  margin-bottom: 20px;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.list-primary-action {
+  li {
+    transition: background-color 0.4s;
+    cursor: pointer;
+
+    &:hover {
+      h2 {
+        color: var(--accent);
+      }
+      img {
+        opacity: 90%;
+      }
+    }
+  }
+}
+
+.list-primary {
+  li {
+    max-width: 200px;
+    border: 0;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+}
+.subtitle {
+  color: var(--secondary);
+  font-style: italic;
+  font-size: 12px;
+  span {
+    margin: 5px;
+  }
+}
+
+.btn {
+  padding: 10px 15px;
+  background-color: #fafafa;
+  border-radius: 5px;
+  border: 0;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.4s;
+  &-primary {
+    background-color: var(--primary);
+    color: #fafafa;
+    &:hover {
+      background-color: var(--secondary);
+    }
+  }
+  &-secondary {
+    background-color: #ddd;
+  }
+}
+
+.badge {
+  background-color: var(--secondary);
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #fafafa;
+}
+
+.active {
+  background-color: var(--secondary);
+  color: #fafafa;
+}
+
+.d1 {
+  border: 1px solid red;
+}
+.d2 {
+  border: 1px solid green;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

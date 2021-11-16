@@ -1,0 +1,33 @@
+<div *ngIf="movie" class="fcard p-4 shadow-sm">
+  <div class="d-flex flex-row flex-align-items-center">
+    <img
+      class="mb-20 mr-10 img-movie-detail"
+      [src]="movie?.img"
+      [alt]="movie?.name"
+    />
+    <div class="d-flex flex-column">
+      <h3 class="mb-20">{{ movie?.name }}</h3>
+      <div class="subtitle">
+        <span class="d-block">Date de sortie : {{ movie.releaseDate }}</span>
+        <span class="d-block">Durée : {{ movie.duration }}</span>
+      </div>
+    </div>
+  </div>
+  <p class="mb-20">{{ movie?.description }}</p>
+  <div class="d-flex flex-row flex-justify-content-between">
+    <button
+      *ngIf="this.authService.isLoggedIn"
+      routerLink="edit"
+      class="btn btn-primary"
+    >
+      Editer le film
+    </button>
+    <button
+      *ngIf="this.authService.isLoggedIn"
+      class="btn-icon"
+      (click)="addFavorite()"
+    >
+      <fa-icon [icon]="faHeart"></fa-icon>
+    </button>
+  </div>
+</div>
