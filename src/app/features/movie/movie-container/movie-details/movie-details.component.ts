@@ -23,7 +23,7 @@ export class MovieDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.activedRoute.params.subscribe((params) => {
+    this.activedRoute.params.subscribe((params: any) => {
       this.movieService
         .getMovie(+params.index - 1)
         .subscribe((movie: Movie) => {

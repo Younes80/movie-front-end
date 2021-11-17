@@ -48,7 +48,7 @@ export class AuthService {
       .subscribe((res: any) => {
         localStorage.setItem('access_token', res.token);
         let tokenInfo = this.getDecodedAccessToken(res.token!); // decode token
-        this.getUserProfile(tokenInfo.id!).subscribe((res) => {
+        this.getUserProfile(tokenInfo.id!).subscribe((res: any) => {
           this.currentUser = res[user.id!];
           this.router.navigate(['users/profile/']);
         });

@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { UserContainerComponent } from './user-container/user-container.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { SigninComponent } from './user-container/signin/signin.component';
 import { SignupComponent } from './user-container/signup/signup.component';
 import { UserProfileComponent } from './user-container/user-profile/user-profile.component';
