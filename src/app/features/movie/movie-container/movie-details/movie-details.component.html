@@ -17,8 +17,9 @@
   <div class="d-flex flex-row flex-justify-content-between">
     <button
       *ngIf="this.authService.isLoggedIn"
-      routerLink="edit"
+      routerLink="/movies/{{ movie.id }}/edit"
       class="btn btn-primary"
+      (click)="activeModal.close('Close click')"
     >
       Editer le film
     </button>
@@ -28,6 +29,14 @@
       (click)="addFavorite()"
     >
       <fa-icon [icon]="faHeart"></fa-icon>
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-dark"
+      (click)="activeModal.close('Close click')"
+    >
+      Fermer
     </button>
   </div>
 </div>

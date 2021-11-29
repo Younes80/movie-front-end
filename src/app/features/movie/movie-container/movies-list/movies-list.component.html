@@ -1,29 +1,52 @@
-<input
-  type="text"
-  [(ngModel)]="searchText"
-  class="mb-20 w-100"
-  placeholder="Recherche un film"
-/>
-<ul
-  *ngIf="movies"
-  class="mb-20 list-primary list-primary-action d-flex flex-justify-content-center flex-row flex-wrap"
->
-  <li
-    [routerLink]="['/movies',movie.id]"
-    routerLinkActive="active-movie-list"
-    *ngFor="let movie of movies | filter: searchText"
-  >
-    <div class="d-flex flex-column flex-align-items-center m-10">
-      <div>
-        <img src="{{ movie.img }}" alt="{{ movie.name }}" />
-      </div>
-      <div class="content-movies-list d-flex flex-column">
-        <h3>{{ movie.name }}</h3>
-        <div class="subtitle">
-          <span class="d-block">Date de sortie : {{ movie.releaseDate }}</span>
-          <span class="d-block">Durée : {{ movie.duration }}</span>
-        </div>
-      </div>
+<div *ngIf="movies">
+  <input
+    type="text"
+    [(ngModel)]="searchText"
+    class="my-5 w-100"
+    placeholder="Recherche un film"
+  />
+  <div class="row">
+    <div>
+      <ul
+        class="
+          mb-5
+          w-100
+          list-primary list-primary-action
+          d-flex
+          flex-justify-content-center flex-row flex-wrap
+        "
+      >
+        <li
+          class="col-md-3 mb-5 mx-3 px-0 shadow-sm"
+          (click)="open(movie.id)"
+          routerLinkActive="active-movie-list"
+          *ngFor="let movie of movies | filter: searchText"
+        >
+          <div class="d-flex flex-column flex-align-items-center">
+            <div>
+              <img
+                src="{{ movie.img }}"
+                class="img-fluid"
+                alt="{{ movie.name }}"
+              />
+            </div>
+            <div class="content-movies-list d-flex flex-column">
+              <h3>{{ movie.name }}</h3>
+              <div class="subtitle">
+                <span class="d-block"
+                  >Date de sortie : {{ movie.releaseDate }}</span
+                >
+                <span class="d-block">Durée : {{ movie.duration }}</span>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
     </div>
-  </li>
-</ul>
+  </div>
+</div>
+
+<ng-container *ngIf="loading$ | async">
+  <div class="overlay"></div>
+  <mat-progress-spinner></mat-progress-spinner>
+</ng-container>

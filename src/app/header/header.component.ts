@@ -1,8 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { AuthService } from './../shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { User } from '../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +8,8 @@ import { User } from '../shared/interfaces/user.interface';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  public navbarOpen = false;
+
   constructor(
     public authService: AuthService,
     public activatedRoute: ActivatedRoute
@@ -18,5 +18,9 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {}
   public logout(): void {
     this.authService.logout();
+  }
+
+  public toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
   }
 }

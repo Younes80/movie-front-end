@@ -47,6 +47,7 @@ export class MovieFormComponent implements OnInit {
     }
   ): FormGroup {
     return this.fb.group({
+      id: [movie.id],
       name: [movie.name, Validators.required],
       releaseDate: [movie.releaseDate, Validators.required],
       duration: [movie.duration, Validators.required],
@@ -64,6 +65,7 @@ export class MovieFormComponent implements OnInit {
       this.movieService.addMovie(this.movieForm.value).subscribe();
     }
 
-    this.router.navigate(['..'], { relativeTo: this.activatedRoute });
+    // this.router.navigate(['..'], { relativeTo: this.activatedRoute });
+    this.router.navigate(['/']);
   }
 }

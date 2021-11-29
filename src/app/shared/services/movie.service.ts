@@ -1,3 +1,4 @@
+import { LoadingService } from './loading.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Pipe } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -12,9 +13,13 @@ const configUrl = 'http://localhost:8000/api/movies';
 export class MovieService {
   public movies$: BehaviorSubject<Movie[]> = new BehaviorSubject<Movie[]>([]);
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    public loadingService: LoadingService
+  ) {}
 
   public getMovie(id: number): Observable<Movie> {
+    this.loadingService.hide();
     return this.movies$.pipe(
       filter((movies: Movie[]) => movies !== null),
       map((movies: Movie[]) => movies[id])
@@ -46,6 +51,7 @@ export class MovieService {
   }
 
   public fetchMovies(): Observable<Movie[]> {
+    this.loadingService.hide();
     return this.http.get(configUrl).pipe(
       tap((movies: any) => {
         this.movies$.next(movies);

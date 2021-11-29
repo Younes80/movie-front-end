@@ -1,10 +1,6 @@
 <div class="d-flex flex-row">
-  <div class="col-md-7">
+  <div class="col-md-12">
     <app-movies-list [movies]="movies$"></app-movies-list>
-  </div>
-  <div class="col-md-5">
-    <div class="relative">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

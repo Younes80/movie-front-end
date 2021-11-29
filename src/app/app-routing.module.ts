@@ -15,7 +15,7 @@ const routes: Routes = [
       import('./features/movie/movie.module').then((m) => m.MovieModule),
   },
   {
-    path: 'favorite',
+    path: 'favorites',
     loadChildren: () =>
       import('./features/favorite/favorite.module').then(
         (m) => m.FavoriteModule

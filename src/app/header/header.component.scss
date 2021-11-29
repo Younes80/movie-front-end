@@ -2,21 +2,24 @@ nav {
   background: var(--primary);
   color: #fafafa;
   .logo {
-    font-size: 18px;
-    font-weight: 700;
+    img {
+      width: 80px;
+    }
   }
   ul {
+    margin-bottom: 0;
     li {
       padding: 10px 20px;
       display: inline-block;
       border-radius: 5px;
+      margin-right: 10px;
       cursor: pointer;
       &:hover {
         background-color: var(--secondary);
       }
       transition: background-color 0.4s;
-      &:first-child {
-        margin-right: 10px;
+      &:last-child {
+        margin-right: 0;
       }
     }
   }

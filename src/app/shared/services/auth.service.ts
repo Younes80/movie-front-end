@@ -1,3 +1,4 @@
+import { LoadingService } from './loading.service';
 import { User } from './../interfaces/user.interface';
 import { Router } from '@angular/router';
 import {
@@ -21,6 +22,12 @@ export class AuthService {
   private headers = new HttpHeaders().set('Content-Type', 'application/json');
   public currentUser = {};
 
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private loadingService: LoadingService
+  ) {}
+
   handleError(error: HttpErrorResponse) {
     let msg = '';
     if (error.error instanceof ErrorEvent) {
@@ -32,8 +39,6 @@ export class AuthService {
     }
     return throwError(msg);
   }
-
-  constructor(private http: HttpClient, private router: Router) {}
 
   public signUp(user: string): Observable<any> {
     console.log(user);
@@ -74,7 +79,7 @@ export class AuthService {
   public logout() {
     let removeToken = localStorage.removeItem('access_token');
     if (removeToken == null) {
-      this.router.navigate(['users/login']);
+      this.router.navigate(['/']);
     }
   }
 
@@ -87,6 +92,7 @@ export class AuthService {
   }
 
   public getUserProfile(id: number): Observable<any> {
+    this.loadingService.hide();
     return this.http
       .get(`${this.endpoint}/users/${id}`, { headers: this.headers })
       .pipe(

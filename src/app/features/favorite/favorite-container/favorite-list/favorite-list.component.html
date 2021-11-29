@@ -1,24 +1,34 @@
-<ul class="list-primary d-flex flex-row">
-  <li
-    *ngFor="let favorite of favorites; let index = index"
-    class="d-flex flex-row flex-justify-content-between"
-  >
-    <div class="d-flex flex-column flex-align-items-center m-10">
-      <div>
-        <img src="{{ favorite.img }}" alt="{{ favorite.name }}" />
-      </div>
-      <div class="content-movies-list">
-        <h3>{{ favorite.name }}</h3>
-        <div class="subtitle">
-          <span class="d-block"
-            >Date de sortie : {{ favorite.releaseDate }}</span
-          >
-          <span class="d-block">Durée : {{ favorite.duration }}</span>
+<div class="container">
+  <h2 class="text-light">Liste des favoris</h2>
+  <ul class="list-primary d-flex flex-row">
+    <li
+      *ngFor="let favorite of favorites; let index = index"
+      class="
+        d-flex
+        flex-row flex-justify-content-between
+        col-md-3
+        mx-3
+        px-0
+        shadow-sm
+      "
+    >
+      <div class="d-flex flex-column flex-align-items-center">
+        <div>
+          <img src="{{ favorite.img }}" alt="{{ favorite.name }}" />
         </div>
+        <div class="content-movies-list">
+          <h3>{{ favorite.name }}</h3>
+          <div class="subtitle">
+            <span class="d-block"
+              >Date de sortie : {{ favorite.releaseDate }}</span
+            >
+            <span class="d-block">Durée : {{ favorite.duration }}</span>
+          </div>
+        </div>
+        <span class="btn" (click)="removeFavorite(index)">
+          Supprimer <fa-icon [icon]="faTimes"></fa-icon>
+        </span>
       </div>
-      <span class="btn" (click)="removeFavorite(index)">
-        Supprimer <fa-icon [icon]="faTimes"></fa-icon>
-      </span>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

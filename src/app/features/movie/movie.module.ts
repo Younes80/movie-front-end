@@ -1,3 +1,4 @@
+import { NgbModalModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FilterPipe } from './../../shared/pipes/filter.pipe';
 import { MovieContainerComponent } from './movie-container/movie-container.component';
 import { NgModule } from '@angular/core';
@@ -8,6 +9,7 @@ import { MovieRoutingModule } from './movie-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MovieFormComponent } from './movie-container/movie-form/movie-form.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     MovieDetailsComponent,
     FilterPipe,
     MovieFormComponent,
-    MovieFormComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +25,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ReactiveFormsModule,
     FormsModule,
     FontAwesomeModule,
+    NgbModule,
+    NgbModalModule,
+    MatProgressSpinnerModule,
   ],
 })
 export class MovieModule {}

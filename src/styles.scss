@@ -63,7 +63,8 @@ a {
   color: inherit;
 }
 
-input {
+input,
+textarea {
   border: 1px solid #ddd;
   border-radius: 5px;
   padding: 8px 15px;
@@ -84,6 +85,13 @@ button:disabled {
 }
 
 body {
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(255, 255, 255, 0.6)
+    ),
+    url("../src/assets/bg-img-film.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
   font-family: var(--font-family);
   color: var(--text-regular);
 }
@@ -170,6 +178,10 @@ body {
   li {
     transition: background-color 0.4s;
     cursor: pointer;
+    img {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+    }
 
     &:hover {
       h2 {
@@ -184,10 +196,10 @@ body {
 
 .list-primary {
   li {
-    max-width: 200px;
+    background-color: #fafafa;
+
     border: 0;
     border-radius: 5px;
-    margin-bottom: 15px;
   }
 }
 .subtitle {
@@ -238,11 +250,34 @@ body {
   border: 1px solid green;
 }
 
-html,
 body {
   height: 100%;
-}
-body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+span.hover {
+  cursor: pointer;
+  &:hover {
+    color: var(--accent);
+  }
+}
+
+// loading spinner CSS
+mat-progress-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  z-index: 2;
+  backdrop-filter: blur(2px);
 }

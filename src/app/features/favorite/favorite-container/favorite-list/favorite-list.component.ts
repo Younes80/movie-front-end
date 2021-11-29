@@ -16,15 +16,6 @@ export class FavoriteListComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  // public removeFavorite(index: number): void {
-  //   this.favorites?.splice(index, 1);
-  // }
-  // public removeFavorite(): void {
-  //   console.log(this.removeFavorite());
-
-  //   // this.favoriteService.removeToFavorite(this.favorites);
-  // }
-
   public removeFavorite(removeFavorite: number): void {
     const currentValue = this.favoriteService.favorites$.getValue();
     currentValue.forEach((item, index) => {

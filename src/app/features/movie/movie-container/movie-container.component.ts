@@ -1,3 +1,4 @@
+import { LoadingService } from './../../../shared/services/loading.service';
 import { MovieService } from './../../../shared/services/movie.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Observable, Subscription } from 'rxjs';
@@ -11,6 +12,7 @@ import { Movie } from 'src/app/shared/interfaces/movie.interface';
 export class MovieContainerComponent implements OnInit, OnDestroy {
   public movies$: Movie[] = [];
   public subscription: Subscription = new Subscription();
+
   constructor(private movieService: MovieService) {}
 
   ngOnInit(): void {

@@ -11,15 +11,15 @@ const routes: Routes = [
     component: MovieContainerComponent,
 
     children: [
-      { path: 'new', component: MovieFormComponent, canActivate: [AuthGuard] },
-      {
-        path: ':index/edit',
-        component: MovieFormComponent,
-        canActivate: [AuthGuard],
-      },
-      { path: ':index', component: MovieDetailsComponent },
+      // { path: ':index', component: MovieDetailsComponent },
       { path: '**', redirectTo: '1', pathMatch: 'full' },
     ],
+  },
+  { path: 'new', component: MovieFormComponent, canActivate: [AuthGuard] },
+  {
+    path: ':index/edit',
+    component: MovieFormComponent,
+    canActivate: [AuthGuard],
   },
 ];
 
